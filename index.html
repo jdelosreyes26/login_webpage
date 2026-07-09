@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Phone & Email</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .remember-forgot a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .remember-forgot a:hover {
+            color: #764ba2;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox input {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .signup-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #764ba2;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #27ae60;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome Back</h1>
+            <p>Login to your account</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="email">Email</button>
+            <button class="tab-btn" data-tab="phone">Phone</button>
+        </div>
+
+        <!-- Email Login Form -->
+        <div id="email" class="tab-content active">
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="Enter your email"
+                        required
+                    >
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password"
+                        required
+                    >
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <div class="remember-forgot">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+                    <a href="#forgot">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Login with Email</button>
+            </form>
+        </div>
+
+        <!-- Phone Login Form -->
+        <div id="phone" class="tab-content">
+            <form id="phoneForm">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="+1 (555) 000-0000"
+                        required
+                    >
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="otp">OTP (One-Time Password)</label>
+                    <input 
+                        type="text" 
+                        id="otp" 
+                        name="otp" 
+                        placeholder="Enter 6-digit OTP"
+                        maxlength="6"
+                        required
+                    >
+                    <div class="error-message" id="otpError"></div>
+                </div>
+
+                <div class="remember-forgot">
+                    <label class="checkbox">
+                        <input type="checkbox" name="rememberPhone">
+                        Remember this device
+                    </label>
+                </div>
+
+                <button type="submit" class="login-btn">Login with Phone</button>
+                <p style="text-align: center; margin-top: 15px; font-size: 13px; color: #999;">
+                    <a href="#resend" style="color: #667eea; text-decoration: none;">Resend OTP</a>
+                </p>
+            </form>
+        </div>
+
+        <div class="signup-link">
+            Don't have an account? <a href="#signup">Sign up here</a>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tabName).classList.add('active');
+            });
+        });
+
+        // Email form validation
+        const emailForm = document.getElementById('emailForm');
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            
+            emailError.style.display = 'none';
+            passwordError.style.display = 'none';
+            
+            let isValid = true;
+            
+            if (!email || !email.includes('@')) {
+                emailError.textContent = 'Please enter a valid email';
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!password || password.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+                passwordError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Email Login: ' + email);
+                // Here you would send data to your backend
+            }
+        });
+
+        // Phone form validation
+        const phoneForm = document.getElementById('phoneForm');
+        phoneForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const phone = document.getElementById('phone').value;
+            const otp = document.getElementById('otp').value;
+            const phoneError = document.getElementById('phoneError');
+            const otpError = document.getElementById('otpError');
+            
+            phoneError.style.display = 'none';
+            otpError.style.display = 'none';
+            
+            let isValid = true;
+            
+            if (!phone || phone.length < 10) {
+                phoneError.textContent = 'Please enter a valid phone number';
+                phoneError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!otp || otp.length !== 6) {
+                otpError.textContent = 'Please enter a valid 6-digit OTP';
+                otpError.style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Phone Login: ' + phone + ' with OTP: ' + otp);
+                // Here you would send data to your backend
+            }
+        });
+    </script>
+</body>
+</html>
