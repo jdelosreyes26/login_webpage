@@ -3,12 +3,12 @@
 // Get these from Firebase Console: https://console.firebase.google.com/
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDemoKeyChangeMe",
-    authDomain: "your-project.firebaseapp.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456"
+    apiKey: "AIzaSyCfrQ4SsgsroM_aBedd3HuwhfqO1bKopqQ",
+    authDomain: "login-jndr26.firebaseapp.com",
+    projectId: "login-jndr26",
+    storageBucket: "login-jndr26.firebasestorage.app",
+    messagingSenderId: "898947504822",
+    appId: "1:898947504822:android:ffbe9b944f420cb547a417"
 };
 
 // Initialize Firebase
