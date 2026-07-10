@@ -17,13 +17,15 @@ firebase.initializeApp(firebaseConfig);
 // Get Auth instance
 const auth = firebase.auth();
 
-// Enable phone authentication with reCAPTCHA
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('send-otp-btn', {
-    'size': 'invisible',
-    'callback': (response) => {
-        console.log('reCAPTCHA verified');
-    },
-    'expired-callback': () => {
-        console.log('reCAPTCHA expired');
-    }
+// Initialize reCAPTCHA when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('send-otp-btn', {
+        'size': 'invisible',
+        'callback': (response) => {
+            console.log('reCAPTCHA verified');
+        },
+        'expired-callback': () => {
+            console.log('reCAPTCHA expired');
+        }
+    });
 });
