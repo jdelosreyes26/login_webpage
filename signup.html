@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Phone & Google</title>
+    <title>Sign Up - Phone & Google</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="login-box">
-            <h1>Welcome Back</h1>
-            <p class="subtitle">Sign in to your account</p>
+            <h1>Create Account</h1>
+            <p class="subtitle">Sign up to get started</p>
             
-            <!-- Phone Login -->
+            <!-- Phone Sign Up -->
             <div class="login-section">
-                <div id="phone-login-section">
-                    <h2>Phone Number Login</h2>
-                    <form id="phone-form">
+                <div id="phone-signup-section">
+                    <h2>Phone Number Sign Up</h2>
+                    <form id="signup-form">
+                        <input type="text" id="fullname" placeholder="Full Name" required>
+                        <input type="email" id="email" placeholder="Email Address" required>
                         <input type="tel" id="phone" placeholder="+1 (555) 123-4567" required>
+                        <input type="password" id="password" placeholder="Password (min 6 characters)" minlength="6" required>
+                        <input type="password" id="confirm-password" placeholder="Confirm Password" minlength="6" required>
                         <button type="button" id="send-otp-btn" class="btn btn-primary">Send OTP</button>
                     </form>
                     
                     <div id="otp-section" style="display: none;">
                         <input type="text" id="otp" placeholder="Enter 6-digit OTP" maxlength="6" required>
-                        <button type="button" id="verify-otp-btn" class="btn btn-primary">Verify OTP</button>
+                        <button type="button" id="verify-otp-btn" class="btn btn-primary">Verify & Create Account</button>
                         <p id="otp-timer" class="timer"></p>
                     </div>
                 </div>
@@ -31,9 +35,9 @@
             
             <div class="divider">OR</div>
             
-            <!-- Google Login -->
+            <!-- Google Sign Up -->
             <div class="login-section">
-                <button type="button" id="google-login-btn" class="btn btn-google">
+                <button type="button" id="google-signup-btn" class="btn btn-google">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="1"></circle>
                         <path d="M12 1v6m0 6v6"></path>
@@ -41,21 +45,21 @@
                         <path d="M1 12h6m6 0h6"></path>
                         <path d="M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24"></path>
                     </svg>
-                    Sign in with Google
+                    Sign up with Google
                 </button>
             </div>
-            
-            <!-- User Info (shown after login) -->
-            <div id="user-info" style="display: none;" class="user-info">
-                <h2>Welcome!</h2>
-                <p id="user-name"></p>
-                <p id="user-email"></p>
-                <button type="button" id="logout-btn" class="btn btn-danger">Logout</button>
-            </div>
 
-            <!-- Sign Up Link -->
+            <!-- Account Created Success -->
+            <div id="account-success" style="display: none;" class="user-info">
+                <h2>Account Created!</h2>
+                <p id="success-name"></p>
+                <p id="success-email"></p>
+                <a href="index.html" class="btn btn-primary" style="text-decoration: none;">Go to Login</a>
+            </div>
+            
+            <!-- Already have account -->
             <div class="login-footer">
-                <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+                <p>Already have an account? <a href="index.html">Login here</a></p>
             </div>
             
             <!-- Messages -->
@@ -69,6 +73,6 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     
     <script src="firebase-config.js"></script>
-    <script src="app.js"></script>
+    <script src="signup.js"></script>
 </body>
 </html>
