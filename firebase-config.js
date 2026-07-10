@@ -8,7 +8,7 @@ const firebaseConfig = {
     projectId: "login-jndr26",
     storageBucket: "login-jndr26.firebasestorage.app",
     messagingSenderId: "898947504822",
-    appId: "1:898947504822:android:ffbe9b944f420cb547a417"
+    appId: "1:898947504822:web:ffbe9b944f420cb547a417"
 };
 
 // Initialize Firebase
