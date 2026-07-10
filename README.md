@@ -2,6 +2,8 @@
 
 A fully operational login webpage with phone number (OTP) and Google OAuth authentication.
 
+https://jdelosreyes26.github.io/login_webpage/landing.html#features
+
 https://jdelosreyes26.github.io/login_webpage/
 
 ## Features
